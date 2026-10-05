@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LoginForm from './Components/LoginForm';
-import ChatWindow from './Components/ChatWindow';
+import LoginForm from './components/loginForm';
+import ChatWindow from './components/ChatWindow';
 import './App.css';
 
 function App() {

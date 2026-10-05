@@ -10,7 +10,7 @@ export async function getStateInstance(idInstance, apiTokenInstance) {
     }
 
     const text = await response.text();
-
+    
     if (!text || text.trim() === '') {
         return null;
     }
@@ -49,11 +49,10 @@ export async function receiveNotification(idInstance, apiTokenInstance) {
     }
 
     const text = await response.text();
-
+     
     if (!text || text.trim() === '') {
         return null;
     }
-
     return JSON.parse(text);
 }
 

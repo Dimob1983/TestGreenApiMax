@@ -31,12 +31,15 @@ export function usePolling({ idInstance, apiTokenInstance, chatId, onNewMessage 
                         body.typeWebhook === 'incomingMessageReceived' &&
                         body.messageData?.typeMessage === 'textMessage'
                     ) {
-                        const messageChatId = body.senderData?.chatId;
                         const text = body.messageData.textMessageData?.textMessage;
 
+                        const senderPhone = body.senderData?.senderPhoneNumber;
 
+                        const normalize = (id) => String(id || '').replace(/\D/g, '');
+                        const senderPhoneClean = normalize(senderPhone);
+                        const myChatIdClean = normalize(chatId);
 
-                        if (messageChatId == chatId && text) {
+                        if (senderPhoneClean === myChatIdClean && text) {
                             onNewMessageRef.current(text);
                         }
                     }
